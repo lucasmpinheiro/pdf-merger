@@ -14,6 +14,7 @@ public class EndorsementTermRoutes extends RouteBuilder {
   public void execute() {
     from(file("./files/input/"))
         .log("Processing file ${in.headers.CamelFilePath}.")
+        .throttle(50)
         .process("endorsementTermAppendProcessor")
         .to(file("./files/output/"))
         .log("Processed file ${in.headers.CamelFilePath}.");
