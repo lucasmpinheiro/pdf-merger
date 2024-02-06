@@ -4,7 +4,7 @@ import static org.apache.camel.builder.endpoint.StaticEndpointBuilders.*;
 
 import org.apache.camel.builder.RouteBuilder;
 
-public class EndorsementTermRoutes extends RouteBuilder {
+public class Routes extends RouteBuilder {
 
   @Override
   public void configure() throws Exception {
@@ -15,7 +15,7 @@ public class EndorsementTermRoutes extends RouteBuilder {
     from(file("./files/input/"))
         .log("Processing file ${in.headers.CamelFilePath}.")
         .throttle(50)
-        .process("endorsementTermAppendProcessor")
+        .process("appendContentProcessor")
         .to(file("./files/output/"))
         .log("Processed file ${in.headers.CamelFilePath}.");
   }

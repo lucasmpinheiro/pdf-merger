@@ -12,7 +12,7 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 
 @ApplicationScoped
 @Named
-public class EndorsementTermAppendProcessor implements Processor {
+public class AppendContentProcessor implements Processor {
 
   @Override
   public void process(Exchange exchange) throws Exception {
@@ -22,7 +22,7 @@ public class EndorsementTermAppendProcessor implements Processor {
     final var document = PDDocument.load(file.getFile());
 
     final var pdfMerger = new PDFMergerUtility();
-    pdfMerger.appendDocument(document, PDDocument.load(new File("./files/termoEndosso.pdf")));
+    pdfMerger.appendDocument(document, PDDocument.load(new File("./files/contentToAppend.pdf")));
 
     final var outputStream = new ByteArrayOutputStream();
     document.save(outputStream);
